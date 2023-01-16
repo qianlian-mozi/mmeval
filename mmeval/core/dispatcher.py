@@ -7,6 +7,7 @@ and NumPy.
 
 In order to deal with the dispatch issue of different calculation methods, we
 adopt a dynamic multiple dispatch mechanism based on type hints.
+为了解决不同计算方法的调度问题，我们采用了基于类型提示的动态多重调度机制。
 
 A simple example of multiple dispatch based on type hints is as below:
 

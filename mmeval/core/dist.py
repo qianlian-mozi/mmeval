@@ -26,13 +26,14 @@ def list_all_backends() -> List[str]:
     """Returns a list of all distributed backend names.
 
     Returns:
-        List[str]: A list of all distributed backend names.
+        List[str]: A list of all distributed backend names. 所有分布式后端名称的列表
     """
     return list(_DIST_BACKENDS.keys())
 
 
 def set_default_dist_backend(dist_backend: str) -> None:
     """Set the given distributed backend as the default distributed backend.
+    将给定的分布式后端设置为默认的分布式后端。
 
     Args:
         dist_backend (str): The distribute backend name to set.
@@ -45,6 +46,7 @@ def set_default_dist_backend(dist_backend: str) -> None:
 @no_type_check
 def get_dist_backend(dist_backend: Optional[str] = None) -> BaseDistBackend:
     """Returns distributed backend by the given distributed backend name.
+    按给定的分布式后端名称返回分布式后端。
 
     Args:
         dist_backend (str, optional): The distributed backend name want to get.

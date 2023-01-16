@@ -12,7 +12,7 @@ class BaseMetric(metaclass=ABCMeta):
     To implement a metric, you should implement a subclass of ``BaseMetric``
     that overrides the ``add`` and ``compute_metric`` methods. ``BaseMetric``
     will automatically complete the distributed synchronization between
-    processes.
+    processes.  auto计算那我可以不管源代码从mmengine那边dist目录下拿来的方法吗 -》 auto：计算 进程间的 dist同步
 
     In the evaluation process, each metric will update ``self._results`` to
     store intermediate results after each call of ``add``. When computing the
@@ -27,11 +27,11 @@ class BaseMetric(metaclass=ABCMeta):
             collected synchronization results. This depends on how the
             distributed data is split. Currently only 'unzip' and 'cat' are
             supported. For PyTorch's ``DistributedSampler``, 'unzip' should
-            be used. Defaults to 'unzip'.
+            be used. Defaults to 'unzip'. concat收集到的分布式的同步的结果
         dist_backend (str, optional): The name of the distributed communication
             backend, you can get all the backend names through
             ``mmeval.core.list_all_backends()``.
-            If None, use the default backend. Defaults to None.
+            If None, use the default backend. Defaults to None.  这个似乎就是get_dist_info
 
     Example to implement an accuracy metric:
 
@@ -108,7 +108,7 @@ class BaseMetric(metaclass=ABCMeta):
         return metric_result
 
     def compute(self, size: Optional[int] = None) -> Dict:
-        """Synchronize intermediate results and then call
+        """Synchronize intermediate results 同步中间的 results and then call
         ``self.compute_metric``.
 
         Args:
